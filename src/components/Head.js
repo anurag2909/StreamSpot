@@ -5,6 +5,8 @@ import { YOUTUBE_SEARCH_API } from "../utils/constants";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => getSearchSuggestions(), 200);
@@ -18,6 +20,7 @@ const Head = () => {
     console.log("API CALL - " + searchQuery);
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
+    setSuggestions(json[1]);
   };
 
   const dispatch = useDispatch();
@@ -41,16 +44,33 @@ const Head = () => {
           />
         </a>
       </div>
-      <div className="col-span-8 text-center">
-        <input
-          type="text"
-          className=" px-3 w-1/2 rounded-l-full border border-gray-400 p-1"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button className="px-4 py-1 rounded-r-full border border-gray-400 bg-gray-100">
-          🔍
-        </button>
+      <div className="col-span-8">
+        <div>
+          <input
+            type="text"
+            className=" px-3 w-1/2 rounded-l-full border border-gray-400 p-1"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={(e) => setShowSuggestions(true)}
+            onBlur={(e) => setShowSuggestions(false)}
+          />
+          <button className="px-4 py-1 rounded-r-full border border-gray-400 bg-gray-100">
+            🔍
+          </button>
+        </div>
+        <div className=" bg-white p-2 w-[28rem] shadow-lg rounded-lg border border-gray-200 absolute">
+          <ul>
+            {showSuggestions &&
+              suggestions.map((s) => (
+                <li
+                  key={s}
+                  className="py-1 px-2 shadow-sm hover:bg-gray-100 cursor-pointer"
+                >
+                  🔍 {s}
+                </li>
+              ))}
+          </ul>
+        </div>
       </div>
       <div className="col-span-3">
         <img
