@@ -6,9 +6,9 @@ import { openDesc } from "../utils/descSlice";
 
 const Metadata = () => {
   const [searchParams] = useSearchParams();
-  const [videoDetails, setVideoDetails] = useState(null); // Initialize as null
+  const [videoDetails, setVideoDetails] = useState(null); 
   const [subState, setSubState] = useState(false);
-  const isDescOpen = useSelector((store) => store.desc.isDescOpen); // Correctly access the state
+  const isDescOpen = useSelector((store) => store.desc.isDescOpen); 
 
   useEffect(() => {
     getVideoDetails();
@@ -26,7 +26,7 @@ const Metadata = () => {
   };
 
   const changeSubState = () => {
-    setSubState(!subState); // Toggle subState
+    setSubState(!subState); 
   };
 
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const Metadata = () => {
   };
 
   if (!videoDetails) {
-    return null; // Handle the case where videoDetails is not yet loaded
+    return null; 
   }
 
   const description = videoDetails.snippet.description;
@@ -83,7 +83,7 @@ const Metadata = () => {
             </h1>
             <button
               className="bg-black text-white text-sm font-bold rounded-lg p-2"
-              onClick={changeSubState} // Pass function reference
+              onClick={changeSubState} 
             >
               {subState ? "Subscribed 🤝" : "Subscribe 🔔"}
             </button>
