@@ -89,11 +89,11 @@ const Metadata = () => {
             </button>
           </div>
           <div className="flex space-x-4">
-            <div className="flex items-center">
-              <button className="bg-gray-200 text-black text-sm font-bold rounded-l-full p-3 hover:bg-gray-300">
+            <div className="flex">
+              <button className="bg-gray-200 text-black text-sm font-bold rounded-l-full p-3 hover:bg-gray-300 border-r-2">
                 👍{Math.round(videoDetails.statistics.likeCount / 1000)}K
               </button>
-              <div className="h-6 border-l border-gray-300"></div>
+              <div className="h-6border-gray-300"></div>
               <button className="bg-gray-200 text-black text-sm font-bold rounded-r-full px-2 py-3 hover:bg-gray-300">
                 👎
               </button>
@@ -118,7 +118,7 @@ const Metadata = () => {
         </div>
         <div className="py-2 font-semibold justify-end">
           <p>{paragraphs[0]}</p>
-          <p onClick={descOpenHandler} className="text-black font-bold cursor-pointer">more...</p>
+          <p onClick={descOpenHandler} className="text-black font-bold cursor-pointer">{isDescOpen ? "less..." : "more.."}</p>
           {isDescOpen && paragraphs.slice(1).map((paragraph, index) => (
             <p key={index} className="mb-1 last:mb-0">
               {paragraph}
