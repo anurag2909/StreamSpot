@@ -12,13 +12,14 @@ const WatchPage = () => {
   useEffect(() => {
     dispatch(closeMenu());
   }, []);
+  
 
   return (
     <div>
       <div className="px-4">
         <iframe
-          width="1100"
-          height="600"
+          width="1000"
+          height="550"
           src={"https://www.youtube.com/embed/" + searchParams.get("v")}
           title="YouTube video player"
           frameBorder="0"
