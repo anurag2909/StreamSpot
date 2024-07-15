@@ -6,9 +6,9 @@ import { openDesc } from "../utils/descSlice";
 
 const Metadata = () => {
   const [searchParams] = useSearchParams();
-  const [videoDetails, setVideoDetails] = useState(null); 
+  const [videoDetails, setVideoDetails] = useState(null);
   const [subState, setSubState] = useState(false);
-  const isDescOpen = useSelector((store) => store.desc.isDescOpen); 
+  const isDescOpen = useSelector((store) => store.desc.isDescOpen);
 
   useEffect(() => {
     getVideoDetails();
@@ -26,11 +26,11 @@ const Metadata = () => {
   };
 
   const changeSubState = () => {
-    setSubState(!subState); 
+    setSubState(!subState);
   };
 
   const dispatch = useDispatch();
-  
+
   const descOpenHandler = () => {
     dispatch(openDesc());
   };
@@ -64,26 +64,26 @@ const Metadata = () => {
   };
 
   if (!videoDetails) {
-    return null; 
+    return null;
   }
 
   const description = videoDetails.snippet.description;
   const paragraphs = description.split("\n");
 
   return (
-    <div className="max-w-screen-lg p-2">
-      <h1 className="font-bold text-2xl px-2 py-2 overflow-hidden">
+    <div className="py-4">
+      <h1 className="font-bold text-2xl py-2 overflow-hidden">
         {videoDetails.snippet.localized.title}
       </h1>
       <div>
         <div className="flex justify-between items-center">
           <div className="flex">
-            <h1 className="font-semibold text-lg px-4 py-1">
+            <h1 className="font-semibold text-lg py-1">
               {videoDetails.snippet.channelTitle}
             </h1>
             <button
-              className="bg-black text-white text-sm font-bold rounded-lg p-2"
-              onClick={changeSubState} 
+              className="bg-black text-white text-sm font-bold rounded-lg p-2 mx-2"
+              onClick={changeSubState}
             >
               {subState ? "Subscribed 🤝" : "Subscribe 🔔"}
             </button>
@@ -93,7 +93,7 @@ const Metadata = () => {
               <button className="bg-gray-200 text-black text-sm font-bold rounded-l-full p-3 hover:bg-gray-300 border-r-2">
                 👍{Math.round(videoDetails.statistics.likeCount / 1000)}K
               </button>
-              <div className="h-6border-gray-300"></div>
+              <div className="h-6 border-gray-300"></div>
               <button className="bg-gray-200 text-black text-sm font-bold rounded-r-full px-2 py-3 hover:bg-gray-300">
                 👎
               </button>
@@ -107,7 +107,7 @@ const Metadata = () => {
           </div>
         </div>
       </div>
-      <div className="px-4 py-2 bg-gray-300 rounded-lg p-4 m-4">
+      <div className="px-4 py-2 bg-gray-300 rounded-lg p-4 mt-4">
         <div className="flex space-x-3">
           <p className="font-semibold">
             {Math.round(videoDetails.statistics.viewCount / 1000000)}M Views
@@ -118,12 +118,18 @@ const Metadata = () => {
         </div>
         <div className="py-2 font-semibold justify-end">
           <p>{paragraphs[0]}</p>
-          <p onClick={descOpenHandler} className="text-black font-bold cursor-pointer">{isDescOpen ? "less..." : "more.."}</p>
-          {isDescOpen && paragraphs.slice(1).map((paragraph, index) => (
-            <p key={index} className="mb-1 last:mb-0">
-              {paragraph}
-            </p>
-          ))}
+          <p
+            onClick={descOpenHandler}
+            className="text-black font-bold cursor-pointer"
+          >
+            {isDescOpen ? "less..." : "more.."}
+          </p>
+          {isDescOpen &&
+            paragraphs.slice(1).map((paragraph, index) => (
+              <p key={index} className="mb-1 last:mb-0">
+                {paragraph}
+              </p>
+            ))}
         </div>
       </div>
     </div>
