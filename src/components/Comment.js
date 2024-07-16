@@ -1,19 +1,17 @@
 import React from "react";
 
 const Comment = ({ data }) => {
-  if (!data) return null;
-
-  const { name, text } = data;
+  const { name, text, replies } = data;
 
   return (
-    <div className="flex">
+    <div className="flex shadow-sm p-2 background bg-gray-200 rounded-lg my-2">
       <img
-        className="h-10 w-10"
+        className="h-9 w-9"
         alt="user"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtRs_rWILOMx5-v3aXwJu7LWUhnPceiKvvDg&s"
       />
-      <div>
-        <p>{name}</p>
+      <div className="px-2">
+        <p className="font-semibold">{name}</p>
         <p>{text}</p>
       </div>
     </div>

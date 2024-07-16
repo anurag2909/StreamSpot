@@ -1,9 +1,9 @@
 import React from "react";
-import Comment from "./Comment";
+import CommentsList from "./CommentsList";
 
-const commentsData = () => [
+const commentsData = [
   {
-    name: "Amurag Pandey",
+    name: "Anurag Pandey",
     text: "Lorem ipzjsnhbcdk djwhdbHAb QJDjahshBHABFEB AJFHEFIHWB",
     replies: [
       {
@@ -251,8 +251,8 @@ const commentsData = () => [
 const CommentsContainer = () => {
   return (
     <div className="py-3">
-      <h1 className="text-xl font-bold">Comments:</h1>
-      <Comment data={commentsData[0]} />
+      <h1 className="text-xl font-bold">Comments: </h1>
+      <CommentsList comments={commentsData} />
     </div>
   );
 };
