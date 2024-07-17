@@ -71,8 +71,8 @@ const Metadata = () => {
   const paragraphs = description.split("\n");
 
   return (
-    <div className="py-4">
-      <h1 className="font-bold text-2xl py-2 overflow-hidden">
+    <div>
+      <h1 className="font-bold text-2xl overflow-hidden">
         {videoDetails.snippet.localized.title}
       </h1>
       <div>
