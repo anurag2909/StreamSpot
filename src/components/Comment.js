@@ -2,6 +2,7 @@ import React from "react";
 
 const Comment = ({ data }) => {
   const { name, text, replies } = data;
+  window.scrollTo(0,0);
 
   return (
     <div className="flex shadow-sm p-2 background bg-gray-200 rounded-lg my-2">

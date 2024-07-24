@@ -39,7 +39,7 @@ const LiveChat = () => {
           //console.log("Form Submitted", liveMessage);
           dispatch(
             addMessage({
-              name: "Anurag",
+              name: "Kiran",
               message: liveMessage,
             })
           );

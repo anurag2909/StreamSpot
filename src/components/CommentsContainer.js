@@ -7,16 +7,16 @@ const commentsData = [
     text: "Lorem ipzjsnhbcdk djwhdbHAb QJDjahshBHABFEB AJFHEFIHWB",
     replies: [
       {
-        name: "Ankit Sharma",
+        name: "Kiran Mishra",
         text: "Reply to Anurag's comment.",
         replies: [
           {
-            name: "Rohit Kumar",
-            text: "Reply to Ankit's reply.",
+            name: "Neha Mishra",
+            text: "Reply to Kiran's reply.",
             replies: [
               {
-                name: "Pooja Gupta",
-                text: "Reply to Rohit's reply.",
+                name: "Rohit Tiwary",
+                text: "Reply to Neha's reply.",
                 replies: [],
               },
             ],

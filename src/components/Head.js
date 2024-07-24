@@ -3,12 +3,16 @@ import { toggleMenu } from "../utils/appSlice";
 import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import { useNavigate } from "react-router-dom";
+import SearchResultsPage from "./SearchResultsPage";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [suggestionSelected, setSuggestionSelected] = useState(null);
 
+  const dispatch = useDispatch();
   const searchCache = useSelector((store) => store.search);
 
   /**
@@ -46,10 +50,20 @@ const Head = () => {
     );
   };
 
-  const dispatch = useDispatch();
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
+
+  const handleSuggestionsClick = (searchedItem) => {
+    console.log("Yes ");
+    setSuggestionSelected(searchedItem);
+    setShowSuggestions(false);
+  };
+
+  if (suggestionSelected) {
+    return <SearchResultsPage searchedItem={suggestionSelected} />;
+  }
+
   return (
     <div className="grid grid-flow-col p-4 m-1 shadow-lg">
       <div className="flex col-span-2 ">
@@ -88,6 +102,7 @@ const Head = () => {
                 <li
                   key={s}
                   className="py-1 px-2 shadow-sm hover:bg-gray-100 cursor-pointer"
+                  onClick={() => handleSuggestionsClick(s)}
                 >
                   🔍 {s}
                 </li>
