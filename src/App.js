@@ -3,7 +3,7 @@ import "./App.css";
 import Body from "./components/Body";
 import Head from "./components/Head";
 import store from "./utils/store";
-import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
 import SearchResultsPage from "./components/SearchResultsPage";
@@ -20,6 +20,10 @@ const appRouter = createBrowserRouter([
       {
         path: "watch",
         element: <WatchPage />,
+      },
+      {
+        path: "search/:searchedVideo",
+        element: <SearchResultsPage />,
       },
     ],
   },

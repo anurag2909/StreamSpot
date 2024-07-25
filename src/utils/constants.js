@@ -10,6 +10,7 @@ export const YOUTUBE_SEARCH_API =
 export const VIDEO_DETAILS_API =
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=";
 
+export const YOUTUBE_SEARCH_SUGGESTIONS_API = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=";
 
 export const LIVE_CHAT_COUNT = 25;
 

@@ -4,18 +4,13 @@ import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import { useNavigate } from "react-router-dom";
-import SearchResultsPage from "./SearchResultsPage";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [suggestionSelected, setSuggestionSelected] = useState(null);
 
-  const dispatch = useDispatch();
-  const searchCache = useSelector((store) => store.search);
-
-  /**
+   /**
    *
    * searchCache = {
    *
@@ -26,10 +21,23 @@ const Head = () => {
    *
    */
 
+  const dispatch = useDispatch();
+  const searchCache = useSelector((store) => store.search);
+  const navigate = useNavigate();
+
+  const handleSuggestionClick = (suggestion) => {
+    setShowSuggestions(false);
+    setSearchQuery(suggestion);
+    navigate(`/search?q=${suggestion}`);
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (searchCache[searchQuery]) setSuggestions(searchCache[searchQuery]);
-      else getSearchSuggestions();
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
     }, 200);
 
     return () => {
@@ -54,19 +62,9 @@ const Head = () => {
     dispatch(toggleMenu());
   };
 
-  const handleSuggestionsClick = (searchedItem) => {
-    console.log("Yes ");
-    setSuggestionSelected(searchedItem);
-    setShowSuggestions(false);
-  };
-
-  if (suggestionSelected) {
-    return <SearchResultsPage searchedItem={suggestionSelected} />;
-  }
-
   return (
     <div className="grid grid-flow-col p-4 m-1 shadow-lg">
-      <div className="flex col-span-2 ">
+      <div className="flex col-span-2">
         <img
           onClick={toggleMenuHandler}
           className="h-7 cursor-pointer"
@@ -81,34 +79,35 @@ const Head = () => {
           />
         </a>
       </div>
-      <div className="col-span-8">
+      <div className="col-span-8 relative">
         <div>
           <input
             type="text"
-            className=" px-3 w-1/2 rounded-l-full border border-gray-400 p-1"
+            className="px-3 w-1/2 rounded-l-full border border-gray-400 p-1"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            onFocus={(e) => setShowSuggestions(true)}
-            onBlur={(e) => setShowSuggestions(false)}
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
           />
           <button className="px-4 py-1 rounded-r-full border border-gray-400 bg-gray-100">
             🔍
           </button>
         </div>
-        <div className=" bg-white p-2 w-[28rem] shadow-lg rounded-lg border border-gray-200 absolute">
-          <ul>
-            {showSuggestions &&
-              suggestions.map((s) => (
+        {showSuggestions && (
+          <div className="bg-white p-2 w-[28rem] shadow-lg rounded-lg border border-gray-200 absolute">
+            <ul>
+              {suggestions.map((s) => (
                 <li
                   key={s}
                   className="py-1 px-2 shadow-sm hover:bg-gray-100 cursor-pointer"
-                  onClick={() => handleSuggestionsClick(s)}
+                  onClick={() => handleSuggestionClick(s)}
                 >
                   🔍 {s}
                 </li>
               ))}
-          </ul>
-        </div>
+            </ul>
+          </div>
+        )}
       </div>
       <div className="col-span-3">
         <img
