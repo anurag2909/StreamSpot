@@ -22,7 +22,7 @@ const appRouter = createBrowserRouter([
         element: <WatchPage />,
       },
       {
-        path: "search/:searchedVideo",
+        path: "results",
         element: <SearchResultsPage />,
       },
     ],
@@ -33,7 +33,6 @@ function App() {
   return (
     <Provider store={store}>
       <div>
-        <Head />
         <RouterProvider router={appRouter} />
       </div>
     </Provider>

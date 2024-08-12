@@ -21,6 +21,7 @@ const Metadata = () => {
         `${VIDEO_DETAILS_API}${videoId}&key=${GOOGLE_API_KEY}`
       );
       const json = await data.json();
+      console.log(json);
       setVideoDetails(json.items[0]);
     }
   };

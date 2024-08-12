@@ -10,7 +10,7 @@ const Head = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-   /**
+  /**
    *
    * searchCache = {
    *
@@ -22,14 +22,8 @@ const Head = () => {
    */
 
   const dispatch = useDispatch();
-  const searchCache = useSelector((store) => store.search);
   const navigate = useNavigate();
-
-  const handleSuggestionClick = (suggestion) => {
-    setShowSuggestions(false);
-    setSearchQuery(suggestion);
-    navigate(`/search?q=${suggestion}`);
-  };
+  const searchCache = useSelector((store) => store.search);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -46,7 +40,7 @@ const Head = () => {
   }, [searchQuery]);
 
   const getSearchSuggestions = async () => {
-    console.log("API CALL - " + searchQuery);
+    // console.log("API CALL - " + searchQuery);
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
@@ -60,6 +54,12 @@ const Head = () => {
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
+  };
+
+  const handlSuggestionsClick = (searchedContent) => {
+    setShowSuggestions(false);
+    navigate(`/results?search_query=${searchedContent}`);
+
   };
 
   return (
@@ -79,7 +79,7 @@ const Head = () => {
           />
         </a>
       </div>
-      <div className="col-span-8 relative">
+      <div className="col-span-9 relative">
         <div>
           <input
             type="text"
@@ -87,7 +87,7 @@ const Head = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setShowSuggestions(true)}
-            onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+            //onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
           />
           <button className="px-4 py-1 rounded-r-full border border-gray-400 bg-gray-100">
             🔍
@@ -100,7 +100,7 @@ const Head = () => {
                 <li
                   key={s}
                   className="py-1 px-2 shadow-sm hover:bg-gray-100 cursor-pointer"
-                  onClick={() => handleSuggestionClick(s)}
+                  onClick={() => handlSuggestionsClick(s)}
                 >
                   🔍 {s}
                 </li>
@@ -109,11 +109,14 @@ const Head = () => {
           </div>
         )}
       </div>
-      <div className="col-span-3">
+      <div className="flex justify-end items-center mr-4">
+        <div className="w-11">
+          <img src="https://thumbs.dreamstime.com/b/notification-icon-vector-material-design-social-media-element-user-interface-sign-eps-ui-image-illustration-new-message-bell-icons-107566385.jpg" />
+        </div>
         <img
-          className="h-7 text-right"
-          alt="user-icon"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtRs_rWILOMx5-v3aXwJu7LWUhnPceiKvvDg&s"
+          className="h-9 ml-2"
+          alt="user"
+          src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
         />
       </div>
     </div>

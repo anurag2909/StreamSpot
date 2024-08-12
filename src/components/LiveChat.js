@@ -8,10 +8,11 @@ const LiveChat = () => {
   const [liveMessage, setLiveMessage] = useState([]);
   const dispatch = useDispatch();
   const ChatMessages = useSelector((store) => store.chat.messages);
+  const [showLiveChat, setShowLiveChat] = useState(false);
+
 
   useEffect(() => {
     const i = setInterval(() => {
-      //console.log("API Polling");
       dispatch(
         addMessage({
           name: generateRandomName(),
@@ -21,7 +22,7 @@ const LiveChat = () => {
     }, 1500);
 
     return () => clearInterval(i);
-  }, []);
+  }, [showLiveChat]);
 
   return (
     <>
@@ -36,10 +37,9 @@ const LiveChat = () => {
         className="w-full ml-2 p-2 border border-black flex rounded-lg"
         onSubmit={(e) => {
           e.preventDefault();
-          //console.log("Form Submitted", liveMessage);
           dispatch(
             addMessage({
-              name: "Kiran",
+              name: "Anurag",
               message: liveMessage,
             })
           );
