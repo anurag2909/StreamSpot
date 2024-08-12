@@ -28,7 +28,6 @@ const SearchResultsPage = () => {
 
   return (
     <div>
-      <h1 className="mb-3 font-semibold text-lg">Search results</h1>
       {searchResults &&
         searchResults.map((result) => (
           <Link to={"/watch?v=" + result.id.videoId}>

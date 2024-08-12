@@ -25,11 +25,11 @@ const SearchResultCard = ({ data }) => {
   };
 
   return (
-    <div className="border rounded-lg p-4 bg-white shadow-md hover:bg-gray-200">
+    <div className="border rounded-lg p-4 bg-white shadow-md hover:bg-gray-300">
       <div className="flex">
         <div>
           <img
-            className="w-[550px] rounded-lg h-[360px]"
+            className="w-[500px] rounded-lg h-[350px]"
             alt="thumbnail"
             src={data.snippet.thumbnails?.high?.url}
           />
@@ -47,7 +47,7 @@ const SearchResultCard = ({ data }) => {
               src="https://yt3.ggpht.com/m9WvArAk8ycx159cbze1Y9WV6B_dvEC1PMoxy_fZvdFivJWiB-dcA5u0i7Y2V9x7LAPDGkMn0g=s68-c-k-c0x00ffffff-no-rj"
             />
             <p className="font-sans px-2 py-1">
-              {data.snippet.channelTitle}{" "}
+              {data.snippet.channelTitle}
               <span className="text-xs bg-blue-900 rounded-full ml-1 text-white">
                 ✔️
               </span>

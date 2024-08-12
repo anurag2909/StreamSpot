@@ -7,7 +7,6 @@ const ButtonList = () => {
     "Music",
     "Cricket",
     "Football",
-    "Competive Programming",
     "Leetcode",
     "Data Structures",
     "Mixes",
@@ -15,6 +14,9 @@ const ButtonList = () => {
     "Software Engineering",
     "Travel",
     "Blogs",
+    "fitness",
+    "Travel",
+    "Wwe"
   ];
 
   return (

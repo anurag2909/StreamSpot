@@ -8,40 +8,118 @@ const Sidebar = () => {
   if (!isMenuOpen) return null;
 
   return (
-    <div className="p-3 shadow-lg w-48 border b-2">
+    <div className="p-3 shadow-lg w-60 bg-white border-r">
       <ul>
-        <Link to="/">
-          <li> Home</li>
+        <Link to="/" className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🏠</span>
+          <li className="text-sm">Home</li>
         </Link>
-        <li> Shorts</li>
-        <li> Videos</li>
-        <li> Live</li>
+        <Link to="/shorts" className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">📺</span>
+          <li className="text-sm">Shorts</li>
+        </Link>
+        <Link to="/subscriptions" className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🛎️</span>
+          <li className="text-sm">Subscriptions</li>
+        </Link>
       </ul>
 
-      <h1 className="font-bold pt-5">Subscriptions</h1>
+      <hr className="my-4" />
+
       <ul>
-        <li> Music</li>
-        <li> Sports</li>
-        <li> Gaming </li>
-        <li> Movies</li>
+        <Link to="/library" className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">📚</span>
+          <li className="text-sm">Library</li>
+        </Link>
+        <Link to="/history" className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🕒</span>
+          <li className="text-sm">History</li>
+        </Link>
+        <Link to="/your-videos" className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🎥</span>
+          <li className="text-sm">Your videos</li>
+        </Link>
+        <Link to="/watch-later" className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">⏲️</span>
+          <li className="text-sm">Watch later</li>
+        </Link>
+        <Link to="/liked-videos" className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">👍</span>
+          <li className="text-sm">Liked videos</li>
+        </Link>
       </ul>
 
-      <h1 className="font-bold pt-5"> Explore</h1>
+      <hr className="my-4" />
+
+      <h1 className="font-bold text-sm py-2">Subscriptions</h1>
       <ul>
-        <li> Trending</li>
-        <li> Shopping</li>
-        <li> Courses</li>
-        <li> Courses</li>
-        <li> Music</li>
-        <li> Movies</li>
-        <li> Fashion & Beauty</li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🎵</span>
+          <span className="text-sm">Music</span>
+        </li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">⚽</span>
+          <span className="text-sm">Sports</span>
+        </li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🎮</span>
+          <span className="text-sm">Gaming</span>
+        </li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🎬</span>
+          <span className="text-sm">Movies</span>
+        </li>
       </ul>
 
-      <ul className="pt-5">
-        <li> Settings</li>
-        <li> Report History</li>
-        <li> Help</li>
-        <li> Feedback</li>
+      <hr className="my-4" />
+
+      <h1 className="font-bold text-sm py-2">Explore</h1>
+      <ul>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🔥</span>
+          <span className="text-sm">Trending</span>
+        </li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🛒</span>
+          <span className="text-sm">Shopping</span>
+        </li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">📚</span>
+          <span className="text-sm">Learning</span>
+        </li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🎼</span>
+          <span className="text-sm">Music</span>
+        </li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🎬</span>
+          <span className="text-sm">Movies</span>
+        </li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">💄</span>
+          <span className="text-sm">Fashion & Beauty</span>
+        </li>
+      </ul>
+
+      <hr className="my-4" />
+
+      <ul>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">⚙️</span>
+          <span className="text-sm">Settings</span>
+        </li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">🧾</span>
+          <span className="text-sm">Report History</span>
+        </li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">❓</span>
+          <span className="text-sm">Help</span>
+        </li>
+        <li className="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+          <span className="text-xl mr-4">💬</span>
+          <span className="text-sm">Feedback</span>
+        </li>
       </ul>
     </div>
   );

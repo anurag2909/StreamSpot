@@ -94,7 +94,7 @@ const Head = () => {
           </button>
         </div>
         {showSuggestions && (
-          <div className="bg-white p-2 w-[28rem] shadow-lg rounded-lg border border-gray-200 absolute">
+          <div className="bg-white p-2 w-[28rem] shadow-lg rounded-lg border border-gray-200 absolute z-50">
             <ul>
               {suggestions.map((s) => (
                 <li
